@@ -71,12 +71,12 @@ bool Adafruit_INA2xx::begin(uint8_t i2c_address, TwoWire* theWire,
       new Adafruit_I2CRegisterBits(device_register, 12, 4);
 
   // Check manufacturer ID (should be 0x5449 for Texas Instruments)
-  // uint16_t mfg_id = mfg_register->read();
-  // Serial.printf("[INA2XX] Checking Manufacturer ID: 0x%X... \n", mfg_id);
-  // if (mfg_id != 0x5449 && mfg_id != 0x1408) {
-  //   Serial.printf("[INA2XX] Invalid Manufacturer... \n");
-  //   return false;
-  // }
+  uint16_t mfg_id = mfg_register->read();
+  Serial.printf("[INA2XX] Checking Manufacturer ID: 0x%X... \n", mfg_id);
+  if (mfg_id != 0x5449 && mfg_id != 0x1408) {
+    Serial.printf("[INA2XX] Invalid Manufacturer... \n");
+    return false;
+  }
 
   // Store device ID for validation in derived classes
   _device_id = device_id->read();
