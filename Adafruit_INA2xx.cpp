@@ -70,7 +70,7 @@ bool Adafruit_INA2xx::begin(uint8_t i2c_address, TwoWire* theWire,
 
   // Check manufacturer ID (should be 0x5449 for Texas Instruments)
   uint16_t mfg_id = mfg_register->read();
-  if (mfg_id != 0x5449) {
+  if (mfg_id != 0x5449 && chip_id != 0x1408) {
     return false;
   }
 
