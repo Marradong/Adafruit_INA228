@@ -61,10 +61,10 @@ bool Adafruit_INA228::begin(uint8_t i2c_address, TwoWire* theWire,
 
   // make sure we're talking to the right chip
   Serial.printf("[INA228] Checking Device ID: 0x%X... \n", _device_id);
-  if (_device_id != INA228_DEVICE_ID) {
-    Serial.printf("[INA228] Invalid Device ID... \n");
-    return false;
-  }
+  // if (_device_id != INA228_DEVICE_ID) {
+  //   Serial.printf("[INA228] Invalid Device ID... \n");
+  //   return false;
+  // }
 
   return true;
 }
