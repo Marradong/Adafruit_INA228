@@ -53,16 +53,16 @@ Adafruit_INA228::Adafruit_INA228(void) {}
  */
 bool Adafruit_INA228::begin(uint8_t i2c_address, TwoWire* theWire,
                             bool skipReset) {
-  Serial.printf("[INA228] Initialising INA2XX Device... \n");
+  Serial.println("[INA228] Initialising INA2XX Device");
   if (!Adafruit_INA2xx::begin(i2c_address, theWire, skipReset)) {
-    Serial.printf("[INA228] INA2XX Device Failed to Begin... \n");
+    Serial.println("[INA228] INA2XX Device Failed to Begin");
     return false;
   }
 
   // make sure we're talking to the right chip
-  Serial.printf("[INA228] Checking Device ID: 0x%X... \n", _device_id);
+  Serial.print("[INA228] Checking Device ID: "); Serial.print(_device_id); Serial.println();
   // if (_device_id != INA228_DEVICE_ID) {
-  //   Serial.printf("[INA228] Invalid Device ID... \n");
+  //   Serial.println("[INA228] Invalid Device ID");
   //   return false;
   // }
 

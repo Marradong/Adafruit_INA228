@@ -55,11 +55,11 @@ Adafruit_INA2xx::Adafruit_INA2xx(void) {}
  */
 bool Adafruit_INA2xx::begin(uint8_t i2c_address, TwoWire* theWire,
                             bool skipReset) {
-  Serial.printf("[INA2XX] Creating I2C Device: 0x%X... \n", i2c_address);
+  Serial.print("[INA2XX] Creating I2C Device: "); Serial.print(i2c_address); Serial.println();
   i2c_dev = new Adafruit_I2CDevice(i2c_address, theWire);
 
   if (!i2c_dev->begin()) {
-    Serial.printf("[INA2XX] I2C Device Failed to Begin... \n");
+    Serial.println("[INA2XX] I2C Device Failed to Begin");
     return false;
   }
 
@@ -72,9 +72,9 @@ bool Adafruit_INA2xx::begin(uint8_t i2c_address, TwoWire* theWire,
 
   // Check manufacturer ID (should be 0x5449 for Texas Instruments)
   uint16_t mfg_id = mfg_register->read();
-  Serial.printf("[INA2XX] Checking Manufacturer ID: 0x%X... \n", mfg_id);
+  Serial.print("[INA2XX] Checking Manufacturer ID: "); Serial.print(mfg_id); Serial.println();
   // if (mfg_id != 0x5449 && mfg_id != 0x1408) {
-  //   Serial.printf("[INA2XX] Invalid Manufacturer... \n");
+  //   Serial.println("[INA2XX] Invalid Manufacturer");
   //   return false;
   // }
 
